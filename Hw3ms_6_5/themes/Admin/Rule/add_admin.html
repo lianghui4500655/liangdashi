@@ -1,0 +1,110 @@
+<extend name="Public:base"/>
+<block name="title">
+    添加管理员
+</block>
+<block name="css">
+    <icheckcss>
+    </icheckcss>
+</block>
+<block name="content">
+    <div class="page-header">
+        <h1>
+            <i class="fa fa-home">
+            </i>
+            首页 > 权限管理 > 添加管理员
+        </h1>
+    </div>
+    <div class="col-xs-12">
+        <div class="tabbable">
+            <ul class="nav nav-tabs padding-12 tab-color-blue background-blue" id="myTab">
+                <li>
+                    <a href="{:U('Admin/Rule/admin_user_list')}">
+                        管理员列表
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="{:U('Admin/Rule/add_admin')}">
+                        添加管理员
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <form class="form-inline" method="post">
+                    <table class="table table-striped table-bordered table-hover table-condensed">
+                        <tr>
+                            <th>
+                                管理组
+                            </th>
+                            <td>
+                                <foreach item="v" name="data">
+                                    {$v['title']}
+                                    <input class="xb-icheck" name="group_ids[]" type="checkbox" value="{$v['id']}">
+                                    </input>
+                                </foreach>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                姓名
+                            </th>
+                            <td>
+                                <input class="input-medium" name="username" type="text"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                手机号
+                            </th>
+                            <td>
+                                <input class="input-medium" name="phone" type="text"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                邮箱
+                            </th>
+                            <td>
+                                <input class="input-medium" name="email" type="text"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                初始密码
+                            </th>
+                            <td>
+                                <input class="input-medium" name="password" type="text"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                状态
+                            </th>
+                            <td>
+                                <span class="inputword">
+                                    允许登录
+                                </span>
+                                <input checked="checked" class="xb-icheck" name="status" type="radio" value="1">
+                                    <span class="inputword">
+                                        禁止登录
+                                    </span>
+                                    <input class="xb-icheck" name="status" type="radio" value="0"/>
+                                </input>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                            </th>
+                            <td>
+                                <input class="btn btn-success" type="submit" value="添加"/>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="js">
+    <icheckjs color="blue">
+    </icheckjs>
+</block>

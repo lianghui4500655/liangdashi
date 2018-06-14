@@ -1,0 +1,276 @@
+<include file="public:header"/>
+<link type="text/css" rel="stylesheet" href="__HOME__/assert/css/index.css">
+
+        <!--banner start-->
+        <div class="banner">
+            <img src="__HOME__/assert/img/banner.jpg" class="banner_pic"/>
+            <div class="banner_slogan">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-12">
+                            <div class="banner_btn">
+                                <!-- <a href="{:U('Home/Detail/index',array('nav'=>38))}" class="bbtn bbtn1" target="_blank">无边界计算营销装备目录 <img src="__HOME__/assert/img/arrow.png" class="arrow_pic"/></a> -->
+                                <a href="http://3ms.huawei.com/hi/IT/MKTFWQIndex.html" class="bbtn bbtn2" target="_blank">返回旧版3MS书架 <img src="__HOME__/assert/img/arrow.png" class="arrow_pic"/></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--banner end-->
+        
+        <!--最新动态 start-->
+        <div class="classify">
+            <!-- <div class="yellow_bg"></div>
+            <div class="green_bg"></div> -->
+            <div class="left_bg bg_1"></div>
+            <div class="center_bg bg_2"></div>
+            <div class="right_bg bg_3"></div>
+            <div class="container">
+                <div class="row">
+                 <!-- 作战必备start -->
+                    <div class="col-md-3 col-lg-3">
+                        <div class="classify_conn">
+                            <!-- <img src="__HOME__/assert/img/yellow_icon.png" class="yellow_pic"/> -->
+                            <div class="classify_small_title">{$newData[40]['name']}</div>
+                            <ul class="classify_list">
+                                <volist name="newData[40]['_data']" id="val" offset="0" length='10'>
+                                    <li class="classify_item">
+                                        <a href="{:U('Home/Detail/index',array('nav'=>$val['id']))}" class="classify_item_a" target="_blank">{$val['name']}</a>
+                                    </li>
+                                </volist>
+                            </ul>
+                            <a class="more white_more" href="{:U('Home/Detail/index',array('nav'=>$val['id']+1))}" target="_blank">
+                                <span class="arrow_icon arrow_icon_1"></span>查看更多
+                            </a>
+                        </div>
+                    </div>
+                    <!-- 作战必备end -->
+
+                    <!--V5新品发布start-->
+                    <div class="col-md-6 col-lg-6">
+                        <div class="classify_conn classify_conn1">
+                            <!-- <img src="__HOME__/assert/img/blue_icon.png" class="blue_pic"/>
+                            <div class="blue_bg"></div> -->
+                            <div class="classify_small_title">{$newData[42]['name']}</div>
+                            <ul class="newP_list">
+                                <volist name="v5_indexArr" id="val" offset="0" length='5'>
+                                    <li class="newP_item">
+                                        <a class="newP_item_a" href="<?php if ($val['url']) {echo $val['url'];} else {echo 'javascript:void(0);';}?>" target="_blank">{$val.name}</a>
+                                    </li>
+                                </volist>
+                            </ul>
+                            <a class="more white_more" href="{:U('Home/Detail/index',array('nav'=>42))}" target="_blank">
+                                <span class="arrow_icon arrow_icon_2"></span>查看更多
+                            </a>
+                        </div>
+                    </div>
+                    <!--V5新品发布end-->
+
+                    <!--计算前言start-->
+                    <div class="col-md-3 col-lg-3">
+                        <div class="classify_conn">
+                            <!-- <img src="__HOME__/assert/img/green_icon.png" class="green_pic"/> -->
+                            <div class="classify_small_title">{$newData[43]['name']}</div>
+                            <ul class="calculate_list">
+                               <volist name="jsqy_indexArr" id="val" offset="0" length='5'>
+                                <li class="calculate_item">
+                                    <a class="calculate_item_a" href="<?php if ($val['url']) {echo $val['url'];} else {echo 'javascript:void(0);';}?>" target="_blank">{$val.name}</a>
+                                </li>
+                                </volist>
+                            </ul>
+                            <a class="more white_more" href="{:U('Home/Detail/index',array('nav'=>43))}">
+                                <span class="arrow_icon arrow_icon_3"></span>查看更多
+                            </a>
+                        </div>
+                    </div>
+                    <!--计算前言end-->
+                </div>
+            </div>
+        </div>
+        <!--最新动态 end-->
+
+        <!--产品与解决方案 start-->
+        <div class="case">
+            <img src="__HOME__/assert/img/case_bg.jpg" class="case_bg"/>
+            <div class="container">
+             <div class="rr">
+               <!--  <div class="row">
+                    <div class="col-md-12 col-lg-12">
+                        <div class="case_title">{$solution['name']}</div>
+                    </div>
+                </div> -->
+                <div class="row">
+                    <volist name="solution['_data']" id="val" offset="0" length='5'>
+                        <div class="col-md-3 col-lg-3 col-zdlg-2-5">
+                            <div class="case_item">
+                                <a href="{:U('Home/Detail/index',array('nav'=>$val['id']))}" class="case_item_a" target="_blank">
+                                    <!-- <div class="sanjiao"></div>
+                                    <div class="case_item_left <?php if($i==2) echo 'case_item_left1';?>">{$val['name']}</div>
+                                    <div class="case_item_right">
+                                        <img src="__HOME__/assert/img/case_pic{$i}.png" class="case_pic"/>
+                                    </div> -->
+                                    <div class="case_item_box case_i_{$i}">
+                                        <span class="case_item_text enFont">{$val['name']}</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </volist>
+                </div>
+              </div>
+              <div class="divide_line"></div>
+
+                <div class="row">
+                    <div class="col-md-12 col-lg-12">
+                        <ul class="case_list">
+                          <volist name="solution['_data']" id="val" offset="5" length='4'>
+                              <li class="case_item1 <?php if($i%2==1) echo 'odd';else echo 'even';?>">
+                                  <a href="{:U('Home/Detail/index',array('nav'=>$val['id']))}" class="case_item1_a" target="_blank">
+                                        <div class="case_item1_conn">
+                                            <img src="__HOME__/assert/img/case_b_{$i}.png" class="case_black_pic"/>
+                                            <img src="__HOME__/assert/img/case_w_{$i}.png" class="case_white_pic"/>
+                                        </div>
+                                        <div class="case_item1_title enFont">{$val['name']}</div>
+                                        <?php   if($i==1){ ?>
+                                          <div class="case_p_name enFont">超融合/数据库/大数据一体机</div>
+                                        <?php } if($i==2){ ?>
+                                          <div class="case_p_name enFont">开放架构小型机</div>
+                                        <?php } if($i==3){ ?>
+                                          <div class="case_p_name enFont">加速部件</div>
+                                        <?php } if($i==4){ ?>
+                                          <div class="case_p_name enFont">服务器管理</div>
+                                        <?php }?>
+                                        <!-- <div class="case_link"></div> -->
+                                   </a>
+                              </li>
+                           </volist>
+                           <volist name="solution['_data']" id="val" offset="9" length='4'>
+                              <li class="case_item1 <?php if($i%2==0) echo 'odd';else echo 'even';?>">
+                                  <a href="{:U('Home/Detail/index',array('nav'=>$val['id']))}" class="case_item1_a" target="_blank">
+                                        
+                                        <div class="case_item1_conn">
+                                            <img src="__HOME__/assert/img/case_b_{$i+4}.png" class="case_black_pic"/>
+                                            <img src="__HOME__/assert/img/case_w_{$i+4}.png" class="case_white_pic"/>
+                                        </div>
+                                        <div class="case_item1_title enFont">{$val['name']}</div>
+                                        <?php  if($i<=3){ ?>
+                                          <div class="case_p_name enFont">FusionServer通用服务器</div>
+                                        <?php } else{ ?>
+                                          <div class="case_p_name enFont"> FusionServer异构服务器</div>
+                                        <?php }?>
+                                        <!-- <div class="case_link"></div> -->
+                                   </a>
+                              </li>
+                           </volist>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--case end-->
+
+        <!--classify start-->
+        <div class="classify">
+            <!-- <div class="yellow_bg"></div>
+            <div class="green_bg"></div> -->
+            <div class="left_bg bg_4"></div>
+            <div class="center_bg bg_5"></div>
+            <div class="right_bg bg_6"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-lg-3">
+                        <div class="classify_conn">
+                            <div class="classify_small_title">{$digital['name']}</div>
+                            <ul class="classify_list classify_list2">
+                                 <volist name="digital['_data']" id="val">
+                                    <li class="classify_item1">
+                                        <a href="{:U('Home/Detail/index',array('nav'=>$val['id']))}" class="classify_item_a1" target="_blank">{$val['name']}</a>
+                                    </li>
+                                </volist>
+                            </ul>
+                            <a class="more white_more" href="{:U('Home/Detail/index',array('nav'=>74))}" target="_blank">
+                                <span class="arrow_icon arrow_icon_1"></span>查看更多
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6">
+                        <div class="classify_conn classify_conn1">
+                            <!-- <div class="blue_bg"></div> -->
+                            <div class="classify_small_title">{$successCase['name']}</div>
+                            <ul class="newP_list newP_list1">
+                                <volist name="case_indexArr" id="val" offset="0" length='5'>
+                                    <li class="newP_item">
+                                        <a class="newP_item_a" href="<?php if ($val['url']) {echo $val['url'];} else {echo 'javascript:void(0);';}?>" target="_blank">
+                                            {$val.name}
+                                        </a>
+                                    </li>
+                                </volist>
+                                
+                            </ul>
+                            <a class="more white_more" href="{:U('Home/Detail/index',array('nav'=>47))}" target="_blank">
+                                <span class="arrow_icon arrow_icon_2"></span>查看更多
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-lg-3">
+                        <div class="classify_conn">
+                            <div class="classify_small_title">{$reports['name']}</div>
+                            <ul class="calculate_list calculate_list1">
+                               <volist name="reports_indexArr" id="val" offset="0" length='5'>
+                                    <li class="newP_item">
+                                        <a class="calculate_item_a" href="<?php if ($val['url']) {echo $val['url'];} else {echo 'javascript:void(0);';}?>" target="_blank">{$val.name}</a>
+                                    </li>
+                                </volist>
+                            </ul>
+                            <a class="more white_more" href="{:U('Home/Detail/index',array('nav'=>48))}" target="_blank">
+                                <span class="arrow_icon arrow_icon_3"></span>查看更多
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--classify end-->
+
+         <!--video start-->
+        <div class="video">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <div class="video_title">{$hotVideo['name']}</div>
+                    </div>
+                </div>
+               <div class="row">
+                 <volist name="video_arr" id="val" offset="0" length='4'>
+                   <div class="col-md-3 col-xs-12 video-item">
+                       <div class="video-cover-img-container">
+                           <a href="<?php if ($val['url']) {echo $val['url'];} else {echo 'javascript:void(0);';}?>" class="video_link" target="_blank">
+                               <div class="video-cover-play">
+                                   <img class="video_big_pic video-cover-img" src="__ROOT__/{$val.img}">
+                                   <img class="video-play" src="__HOME__/assert/img/player_btn.png" />
+                               </div>
+                               <div class="p2 k1 video_desc">
+                                   {$val.name}
+                               </div>
+                           </a>
+                       </div>
+                   </div>
+                 </volist>
+                <div class="row">
+                    <div class="col-md-12 col-lg-12">
+                        <a class="video_more" href="{:U('Home/Detail/index',array('nav'=>49))}" target="_blank"><img src="__HOME__/assert/img/arrow.png" class="video_more_icon">查看更多</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </div>
+        <!--video end-->
+         <!--大白 start-->
+    <a href="http://10.21.135.176/rb/login.jsp" class="bigWhite" target="_blank">
+        <img src="__HOME__/assert/img/bigWhite.png" class="bigWhite_pic">
+        <img src="__HOME__/assert/img/bigWhite_2.png" class="bigWhite_two_pic">
+    </a>
+    <!--大白 end-->
+<include file="public:footer"/>
+<script type="text/javascript" src="__HOME__/assert/js/header.js"></script>

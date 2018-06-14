@@ -1,0 +1,74 @@
+@font-face {
+    font-family: "AkkuratPro-Light";
+    src: url("../fonts/AkkuratPro-Light.eot");
+    src: url("../fonts/AkkuratPro-Light.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/AkkuratPro-Light.otf") format("opentype"),
+    url("../fonts/AkkuratPro-Light.woff") format("woff"),
+    url("../fonts/AkkuratPro-Light.ttf") format("truetype"),
+    url("../fonts/AkkuratPro-Light.svg") format("svg");
+}
+body{line-height:160%;}
+a,a:hover,a:visited,a:active{
+    text-decoration: none!important;
+    outline:none;
+}
+body{
+    font-family: "Microsoft YaHei";
+    font-size:16px;
+}
+.enFont{
+    font-family: "AkkuratPro-Light";
+}
+#container{
+    position: relative;
+    width: 100%;
+    left:0;
+    top:0;
+    overflow:hidden;
+}
+.container {
+    width: 100% !important;
+    max-width: 1300px;
+}
+.container-fluid{
+    padding:0;
+    max-width:100%;
+}
+*{
+    margin: 0;
+    padding: 0;
+    outline:none;
+    box-sizing: border-box;
+}
+/* html, body{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    overflow:auto;
+    font-family: 'Microsoft Yahei';
+} */
+img{
+    border:0;
+}
+a,a:hover,a:visited,a:active,a:focus{
+    text-decoration: none;
+    outline: none;
+}
+ul,li{
+    list-style: none;
+}
+
+.gm-style .place-card-large{
+    display:none!important;
+}
+
+@media screen and (min-width:1400px) and (max-width:1920px){
+    .container {
+        width: 100% !important;
+        max-width: 1300px;
+    }
+}
+

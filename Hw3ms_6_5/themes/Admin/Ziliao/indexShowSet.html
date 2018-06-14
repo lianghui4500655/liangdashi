@@ -1,0 +1,166 @@
+<extend name="Public:base"/>
+<block name="title">
+    {$name} > 资料管理
+</block>
+<block name="content">
+    <div class="page-header">
+        <h1>
+            <span> 
+              <notempty name="navpname">{$navpname} ></notempty>
+              <notempty name="navname">{$navname} </notempty> 
+            </span>
+        </h1>
+    </div>
+    <style type="text/css">
+    th{
+       text-align: center;
+    }
+    td{
+      word-break: break-all;
+       text-align: center;
+    }
+    table{
+      table-layout:fixed;
+    }
+
+</style>
+    <div class="col-xs-12">
+             <div class="tabbable">
+                   <ul class="nav nav-tabs padding-12 tab-color-blue background-blue" id="myTab">
+                       <li><a href="{:U('Admin/Ziliao/index',array('nav'=>I('nav'),'cate'=>I('cate')))}">返回</a></li>
+                       <li class="active"> <a href="javascript:;" onclick="add()">首页展示管理</a></li>
+                   </ul>
+                   <div class="tab-content">
+                        <form class="" action="{:U('order')}" method="post">
+                             <table class="table table-striped table-bordered table-hover table-condensed">
+                                 <tr>
+                                     <th width="5%">排序</th>
+                                     <th width="15%">名称</th>
+                                     <th width="15%">英文名</th>
+                                     <th width="25%">链接</th>
+                                     <th width="25%">英文链接</th>
+                                     <!-- <th>添加时间</th> -->
+                                     <th width="15%">操作</th>
+
+                                 </tr>
+                                 <tfoot class="tt">
+                            <foreach name="data" item="v">
+                                <tr>
+                                    <td class="ym"> <input class="input-medium" style="width:40px;height:25px;" type="text" name="{$v['id']}" value="{$v['order_number']}" readonly="">
+                                    </td>
+                                    <td>{$v['name']}</td>
+                                    <td>{$v['name_en']}</td>
+                                    <td>{$v['url']}</td>
+                                    <td>{$v['url_en']}</td>
+                                    <!-- <td>{$v['createtime']}</td> -->
+                                    <td>  
+                                         <p><a href="javascript:;" vId="{$v['id']}" vName="{$v['name']}" vName_en="{$v['name_en']}" vUrl="{$v['url']}" vUrl_en="{$v['url_en']}" vImg="{$v['img']}" onclick="edit(this)">修改</a></p>
+                                         <p><a href="javascript:if(confirm('确定删除？'))location='{:U('delete',array('id'=>$v['id']))}'">删除</a></p>
+                                          <if condition="$v['status'] eq '0'">
+                                          <p><a href="#" vId="{$v['id']}" onclick="index_show(this,'1')"> 首页显示</a> </p>
+                                          <else/>
+                                          <p><a href="#" vId="{$v['id']}" onclick="index_show(this,'0')"> 取消首页显示</a> </p>
+                                          </if>
+                                    </td>
+                                </tr>
+                            </foreach>
+                                </tfoot>
+                            </table>
+                            <tr>
+                                    <td colspan="10" style="text-align: left;"><input class="btn btn-success" type="submit" value="确认排序" >(拖拽完成后请点击)</td> 
+                            </tr>
+                       </form>
+                   </div>
+             </div>
+         </div>
+          <div class="modal fade" id="bjy-edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+               <div class="modal-dialog">
+                     <div class="modal-content">
+                            <div class="modal-header"> 
+                                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> &times;</button>
+                                  <h4 class="modal-title" id="myModalLabel">{$name} > 修改资料</h4>
+                            </div>
+                            <div class="modal-body">
+                                 <form id="bjy-form" class="form-inline" action="{:U('edit')}" method="post" enctype="multipart/form-data"> 
+                                      <input type="hidden" name="id">
+                                      <table class="table table-striped table-bordered table-hover table-condensed">
+                                           <tr>
+                                               <th width="12%">名称：</th>
+                                               <td> <input class="input-medium" type="text" name="name" required=""></td>
+                                           </tr>
+                                           <tr>
+                                              <th>英文名：</th>
+                                              <td> <input class="input-medium" type="text" name="name_en"> </td>
+                                           </tr>
+                                           <tr>
+                                                <th width="12%">链接：</th>
+                                                <td> <input class="input-medium" type="text" name="url"></td>
+                                           </tr>
+                                           <tr>
+                                                <th>链接(英文)：</th>
+                                                <td> <input class="input-medium" type="text" name="url_en"> </td>
+                                           </tr>
+                                           <tr><th></th>
+                                               <td> <input class="btn btn-success" type="submit" value="修改">
+                                               </td>
+                                          </tr>
+                                    </table>
+                                 </form>
+                            </div>
+                     </div>
+               </div>
+       </div>
+
+</block>
+<block name="js">
+<script>
+   
+   $( "tfoot").sortable({
+            connectWith: "tfoot",
+            dropOnEmpty: false,
+            stop: function() {
+              for (var i = 0; i <$('.ym').size(); i++) {
+                $('.ym>input').eq(i).val(i+1);
+              }
+            }
+          });
+   $( "tfoot").disableSelection();
+    // 添加资料
+   function add(){
+      $("input[name='name']").val('');
+      $('#bjy-add').modal('show');
+   }
+     // 首页显示/不显示
+    function index_show(re,item){
+        var vId=$(re).attr('vId');
+        $.ajax({
+            url:'{:U('index_show')}',
+            type:'post',
+            dataType:'json',
+            data:{'id':vId,'status':item,'navid':'<?php echo I('nav');?>'},
+            success:function(re){
+                  console.log(re);
+                  alert(re.info)
+                  if(re.status=='0') {}
+                  else  location.href="";
+            }
+        })
+    }
+    // 修改资料
+    function edit(obj){
+        var vId=$(obj).attr('vId');
+        var vName=$(obj).attr('vName');
+        var vName_en=$(obj).attr('vName_en');
+        var vUrl=$(obj).attr('vUrl');
+        var vUrl_en=$(obj).attr('vUrl_en');
+        var vImg=$(obj).attr('vImg');
+        $('#bjy-edit').find("input[name='id']").val(vId);
+        $('#bjy-edit').find("input[name='name']").val(vName);
+        $('#bjy-edit').find("input[name='name_en']").val(vName_en);
+        // $('#bjy-edit').find("input[name='img']").val(vImg);
+        $('#bjy-edit').find("input[name='url']").val(vUrl);
+        $('#bjy-edit').find("input[name='url_en']").val(vUrl_en);
+        $('#bjy-edit').modal('show');
+    }
+    </script>
+</block>

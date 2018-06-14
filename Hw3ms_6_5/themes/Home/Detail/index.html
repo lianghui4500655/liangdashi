@@ -1,0 +1,187 @@
+<include file="public:header"/>
+    <link type="text/css" rel="stylesheet" href="__HOME__/assert/css/details.css">
+        <!--details start-->
+        <div class="details">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-lg-12">
+                        <!---->
+                        <div class="details_nav">
+                            <a class="details_nav_a" href="{:U('Home/index/index')}">首页</a>
+                            <a class="details_nav_a arrow">&gt;</a>
+                            <a class="details_nav_a sort">{$name}</a>
+                        </div>
+
+                        <!--有右侧分类 start-->
+                        <div class="details_conn">
+                            <!--左侧内容 start-->
+                            <!--<div class="details_left oneColumn">-->
+                             <div class="details_left <?php if (in_array(I('get.nav'), array('38','42','43','47','48','49'))) { echo 'oneColumn';}?>">
+                                <!--主体内容-->
+                                <table class="tb_two">
+                                    <tbody>
+                                    <!--NVMe SSD-->
+                                    <?php foreach ($data as $k => $v) {
+                                            $num = array_depth($v);
+                                            if ($num <= 3) {?>
+                                              <?php  if(!empty($v['ziliao'])) {?>
+                                                 <tr>
+                                                     <td class="s_bg" rowspan="<?php echo count($v['ziliao']);?>">
+                                                         <div class="enFont"><?php echo $v['name'];?> </div>
+                                                         <div class="enFont"><?php echo $v['name_en'];?></div>
+                                                     </td>
+                                                      <?php foreach($v['ziliao'] as $a=>$b){ ?>  
+                                                     <td class="w_bg" colspan="3">
+                                                         <div class="d_conn">
+                                                             <div class="d_left">
+                                                                 <div class="d_cnFont"><?php echo $b['name'];?></div>
+                                                                 <div class="enFont"><?php echo $b['name_en'];?></div>
+                                                             </div>
+                                                             <div class="d_right">
+                                                                   <a href="<?php if ($b['url']) {echo $b['url'];} else {echo 'javascript:void(0);';}?>" class="d_btn <?php if (!$b['url']) {echo 'd_btn_gray';}?>" target="_blank">Cn</a>
+                                                                   <a href="<?php if ($b['url']) {echo $b['url_en'];} else {echo 'javascript:void(0);';}?>" class="d_btn <?php if (!$b['url_en']) {echo 'd_btn_gray';}?>" target="_blank">En</a>
+                                                             </div>
+                                                         </div>
+                                                     </td>
+                                                 </tr>
+                                               <?php }?>
+                                             <?php }?>
+                                             <?php }else if ($num <= 5) { $larnum = 0; ?>
+                                                   <?php foreach($v['_data'] as $x=>$y){
+                                                              $larnum += count($y['ziliao']);
+                                                    } 
+													                   if($larnum==0) $larnum=count($v['_data']);
+													                 ?>
+                                                <tr>
+                                                   <td rowspan="{$larnum}" class="s_bg">
+                                                       <div class="enFont">{$v['name']}</div>
+                                                       <div class="enFont">{$v['name_en']}</div>
+                                                   </td>
+                                             <?php         foreach($v['_data'] as $key=>$val){   ?>
+
+                                                   <td rowspan="<?php if(count($val['ziliao'])>0) echo count($val['ziliao']);else echo 1;?>" class="m_bg">
+                                                       <div>{$val['name']}</div>
+                                                       <div>{$val['name_en']}</div>
+                                                   </td>
+                                            <?php  if(!empty($val['ziliao'])){  ?>
+                                             <?php              foreach($val['ziliao'] as $a=>$b){   ?>
+                                             
+                                                   <td class="w_bg" colspan="2">
+                                                       <div class="d_conn">
+                                                           <div class="d_left">
+                                                               <div class="d_cnFont">{$b['name']}</div>
+                                                               <div class="enFont">{$b['name_en']}</div>
+                                                           </div>
+                                                           <div class="d_right">
+                                                                      <a href="<?php if ($b['url']) {echo $b['url'];} else {echo 'javascript:void(0);';}?>" class="d_btn <?php if (!$b['url']) {echo 'd_btn_gray';}?>" target="_blank">Cn</a>
+                                                                     <a href="<?php if ($b['url']) {echo $b['url_en'];} else {echo 'javascript:void(0);';}?>" class="d_btn <?php if (!$b['url_en']) {echo 'd_btn_gray';}?>" target="_blank">En</a>
+                                                           </div>
+                                                       </div>
+                                                   </td>
+                                               </tr>
+                                               <?php }?>
+                                               <?php  }else{  ?>
+                                                </tr>
+                                              <?php }}?>
+                                            <?php }else { ?>
+
+                                            <?php   $larnum = 0;
+                                            foreach ($v['_data'] as $x => $y) {
+                                                  if(empty($y['_data'])) {
+                                                      $larnum +=1;
+                                                  }else{
+                                                    foreach ($y['_data'] as $a => $b) {
+                                                        if(empty($b['ziliao'])) $larnum +=1;
+                                                        else $larnum += count($b['ziliao']);
+                                                    }
+                                                  }
+												                       if($larnum==0) $larnum=1;
+                                                  //var_dump($larnum);
+                                            }?>
+                                       <tr>
+                                        <td rowspan="{$larnum}" class="s_bg">
+                                            <div class="enFont">{$v['name']}</div>
+                                            <div class="enFont">{$v['name_en']}</div>
+                                        </td>
+                                        <?php foreach ($v['_data'] as $x => $y) { 
+                                           $minnum = 0; 
+                                              foreach ($y['_data'] as $a => $b) {
+                                                 if(empty($b['ziliao'])) $minnum +=1;
+                                                 else $minnum += count($b['ziliao']);
+                                               }
+											                  if($minnum==0) $minnum=1;
+
+                                           ?>
+                                        <td rowspan="{$minnum}" class="m_bg">
+                                            <div class="enFont">{$y['name']}</div>
+                                            <div class="enFont">{$y['name_en']}</div>
+                                        </td>
+                                         <?php  if(!empty($y['_data'])){  ?>
+                                         <?php foreach ($y['_data'] as $c => $d) { ?>
+                                        <td class="q_bg" rowspan="<?php if(count($d['ziliao'])>0) echo count($d['ziliao']);else echo 1;?>">
+                                            <div>{$d['name']}</div>
+                                            <div>{$d['name_en']}</div>
+                                        </td>
+                                         
+                                         <?php  if(!empty($d['ziliao'])){  ?>
+                                        <?php foreach ($d['ziliao'] as $m => $n) { ?>
+                                        <td class="w_bg">
+                                            <div class="d_conn">
+                                                <div class="d_left">
+                                                    <div class="d_cnFont">{$n['name']}</div>
+                                                    <div class="enFont">{$n['name_en']}</div>
+                                                </div>
+                                                <div class="d_right">
+                                                      <a href="<?php if ($n['url']) {echo $n['url'];} else {echo 'javascript:void(0);';}?>" class="d_btn <?php if (!$n['url']) {echo 'd_btn_gray';}?>" target="_blank">Cn</a>
+                                                      <a href="<?php if ($n['url_en']) {echo $n['url_en'];} else {echo 'javascript:void(0);';}?>" class="d_btn <?php if (!$n['url']) {echo 'd_btn_gray';}?>" target="_blank">En</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                   <?php  }}else{   ?>  
+                                     </tr>
+                                  <?php }?>
+                                  <?php }?>
+                                  <?php }else{ ?>
+                                   </tr>
+                                  <?php }}?>
+                                  <?php  }}?>
+                                    </tbody>
+                                </table>
+                                <?php if (in_array(I('get.nav'), array('38','42','43','47','48','49'))) {  ?>
+                                    <div style="height:100px"></div>
+                                <?php }?>
+                            </div>
+                            <!--左侧内容 end-->
+
+                            <!--分类-->
+                            <!--<div class="details_right oneColumnAsideHidden">-->
+                            <div class="details_right <?php if (in_array(I('get.nav'), array('38','42','43','47','48','49'))) { echo 'oneColumnAsideHidden';}?>">
+                                <ul class="sort_list">
+                                    <volist name="navArr" id="val">
+                                        <li class="sort_item">
+                                            <a class="sort_item_a <?php if(I('get.nav')==$val['id']) echo 'sort_item_curr_a';?>"" href="{:U('Home/Detail/index',array('nav'=>$val['id']))}">
+                                                <div class="s_cnFont">{$val.name}</div>
+                                                <div class="enFont s_enFont">{$val.name_en}</div>
+                                                <div class="enFont s_enFont">&nbsp;</div>
+                                                <div class="enFont s_enFont">&nbsp;</div>
+                                            </a>
+                                        </li>
+                                    </volist>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--有右侧分类 end-->
+
+                        <!--
+                            备注：如果没有右侧分类，内容区域显示100%；
+                            1、在“details_left”样式后面加上“ oneColumn”样式；
+                            2、在“details_right”样式后面加上“ oneColumnAsideHidden”样式；
+                        -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--details end-->
+
+<include file="public:footer"/>

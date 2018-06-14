@@ -1,0 +1,93 @@
+<extend name="Public:base"/>
+<block name="title">后台首页</block>
+<block name="content">
+	<div class="page-header">
+	    <h1><i class="fa fa-home"></i> 首页</h1>
+	</div>
+	<div class="col-xs-12">
+	    <div id="out">
+	        <div class="inside">
+	            <div class="box test">
+	                <h2>环境监测</h2>
+	                <table class="table table-border">
+	                    <tr>
+	                        <th width="25%">坏境</th>
+	                        <th width="25%">当前配置</th>
+	                    </tr>
+	                    <tr>
+	                        <td>操作系统</td>
+	                        <td><?php echo php_uname('s'); ?></td>
+	                    </tr>
+	                    <tr>
+	                        <td>php版本</td>
+	                        <td><?php echo PHP_VERSION ?></td>
+	                    </tr>
+	                    <tr>
+	                        <td>apache版本</td>
+	                        <td><?php echo apache_get_version(); ?></td>
+	                    </tr>
+	                    
+	                </table>
+	                <h2>目录权限</h2>
+	                <table class="table table-border">
+	                    <tr>
+	                        <th width="25%">坏境</th>
+	                        <th width="25%">当前配置</th>
+	                    </tr>
+	                    <tr>
+	                        <td>./</td>
+	                        <td>
+	                            <?php if (is_writable('./')): ?>
+	                                可写
+	                            <?php else: ?>
+	                                不可写
+	                            <?php endif ?>
+	                        </td>
+	                    </tr>
+	                    <tr>
+	                        <td>./Upload</td>
+	                        <td>
+	                            <?php if (is_writable('./Upload')): ?>
+	                                可写
+	                            <?php else: ?>
+	                                不可写
+	                            <?php endif ?>
+	                        </td>
+	                    </tr>
+	                    <tr>
+	                        <td>./Runtime</td>
+	                        <td>
+	                            <?php if (is_writable('./Runtime')): ?>
+	                                可写
+	                            <?php else: ?>
+	                                不可写
+	                            <?php endif ?>
+	                        </td>
+	                    </tr>
+	                    <tr>
+	                        <td>./Public/install</td>
+	                        <td>
+	                            <?php if (is_writable('./Public/install')): ?>
+	                                可写
+	                            <?php else: ?>
+	                                不可写
+	                            <?php endif ?>
+	                        </td>
+	                    </tr>
+	                    <tr>
+	                        <td>./Application/Common/Conf</td>
+	                        <td>
+	                            <?php if (is_writable('./Application/Common/Conf')): ?>
+	                                可写
+	                            <?php else: ?>
+	                                不可写
+	                            <?php endif ?>
+	                        </td>
+	                    </tr>
+	                </table>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</block>
+<block name="js"></block>

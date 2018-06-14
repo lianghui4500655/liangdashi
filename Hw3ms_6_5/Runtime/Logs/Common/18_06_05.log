@@ -1,0 +1,12 @@
+[ 2018-06-05T10:47:33+08:00 ] ::1 /web/Hw3ms/Public/statics/aceadmin/Images/login-bg-1.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000031s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000933s ]
+ERR: 无法加载模块:Public
+
+[ 2018-06-05T10:48:53+08:00 ] ::1 /web/Hw3ms/Public/statics/aceadmin/Images/login-bg-1.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000017s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000397s ]
+ERR: 无法加载模块:Public
+

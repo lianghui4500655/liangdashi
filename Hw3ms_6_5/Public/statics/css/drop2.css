@@ -1,0 +1,58 @@
+        .droptarget {
+          width: 100%
+        }
+        .ul_box,.ul_head{
+          width: 100%;
+          border: 1px solid #dddddd;
+        }
+        .ul_box:after,.ul_head:after{
+          display: block;
+          content: "clear";
+          height: 0;
+          clear: both;
+          overflow: hidden;
+          visibility: hidden;
+        }
+        .ul_box>div,.ul_head>div{
+          float: left;
+          line-height: 25px;
+          padding: 5px;
+          height: 35px;
+        }
+        .li1{
+          width: 10%;
+          border-right: 1px solid #dddddd;
+
+        }
+        .li2{
+          width: 30%;
+          border-right: 1px solid #dddddd;
+        }
+        .li3{
+          width: 30%;
+          border-right: 1px solid #dddddd;
+        }
+        .li5{
+          width: 30%;
+          border-right: 1px solid #dddddd;
+        }
+        .btnBG{
+          width: 100%;
+          line-height: 50px;
+        }
+        .box,.boox{
+          width: 100%;
+        }
+        .listBtn{
+          margin-left: 10px;
+          /*width: 20px;*/
+          height: 20px;
+          text-align: right;
+        }
+       /* .box>div>.btnBG>.ul_box>.li2{
+          color: red;
+
+        }
+        .boox>div>.btnBG>.ul_box>.li2{
+          color: #ff0;
+        }*/

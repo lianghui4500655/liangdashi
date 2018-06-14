@@ -1,0 +1,36 @@
+[ 2018-06-07T16:17:39+08:00 ] ::1 /web/Hw3ms_6_5/index.php/Home/index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000021s ]
+INFO: [ app_init ] --END-- [ RunTime:0.008053s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.010360s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.010438s ]
+SQL: SHOW COLUMNS FROM `hw3ms_admin_nav` [ RunTime:0.0004s ]
+SQL: SELECT * FROM `hw3ms_admin_nav` ORDER BY `order_number`,id is null,`order_number`,`id`  [ RunTime:0.0003s ]
+NOTIC: [8] Undefined offset: 46 E:\www\web\Hw3ms_6_5\Application\Home\Controller\IndexController.class.php 第 23 行.
+SQL: SHOW COLUMNS FROM `hw3ms_video` [ RunTime:0.0006s ]
+SQL: SELECT * FROM `hw3ms_video` WHERE ( status=1 ) ORDER BY `order_number`  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `hw3ms_category` [ RunTime:0.0007s ]
+SQL: SELECT * FROM `hw3ms_category` WHERE ( navid=42 ) ORDER BY `order_number`  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `hw3ms_ziliao` [ RunTime:0.0004s ]
+SQL: SELECT * FROM `hw3ms_ziliao` WHERE `cateid` IN ('355') AND `status` = 1 ORDER BY `order_number`  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `hw3ms_category` WHERE ( navid=43 ) ORDER BY `order_number`  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `hw3ms_ziliao` WHERE `cateid` IN ('356') AND `status` = 1 ORDER BY `order_number`  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `hw3ms_category` WHERE ( navid=47 ) ORDER BY `order_number`  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `hw3ms_ziliao` WHERE `cateid` IN ('343','344') AND `status` = 1 ORDER BY `order_number`  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `hw3ms_category` WHERE ( navid=48 ) ORDER BY `order_number`  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `hw3ms_ziliao` WHERE `cateid` IN ('345','346','347') AND `status` = 1 ORDER BY `order_number`  [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000142s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000202s ]
+NOTIC: [8] Undefined offset: 43 E:\www\web\Hw3ms_6_5\Runtime\Cache\Home\17d0e3b11d4b54516774bc6443bf09af.php 第 119 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.101847s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.101905s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.010287s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.010416s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.011986s ]
+INFO: [ app_end ] --END-- [ RunTime:0.012102s ]
+

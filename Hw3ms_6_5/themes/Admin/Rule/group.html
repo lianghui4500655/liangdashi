@@ -1,0 +1,153 @@
+<extend name="Public:base"/>
+<block name="title">
+    用户组管理
+</block>
+<block name="content">
+    <div class="page-header">
+        <h1>
+            首页 > 用户组管理
+        </h1>
+    </div>
+    <div class="col-xs-12">
+        <div class="tabbable">
+            <ul class="nav nav-tabs padding-12 tab-color-blue background-blue" id="myTab">
+                <li class="active">
+                    <a data-toggle="tab" href="#home">
+                        用户组列表
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;" onclick="add()">
+                        添加用户组
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <table class="table table-striped table-bordered table-hover table-condensed">
+                    <tr>
+                        <th>
+                            用户组名
+                        </th>
+                        <th>
+                            操作
+                        </th>
+                    </tr>
+                    <foreach item="v" name="data">
+                        <tr>
+                            <td>
+                                {$v['title']}
+                            </td>
+                            <td>
+                                <a href="javascript:;" onclick="edit(this)" ruleid="{$v['id']}" ruletitle="{$v['title']}">
+                                    修改
+                                </a>
+                                |
+                                <a href="javascript:if(confirm('确定删除？'))location='{:U('Admin/Rule/delete_group',array('id'=>$v['id']))}'">
+                                    删除
+                                </a>
+                                |
+                                <a href="{:U('Admin/Rule/rule_group',array('id'=>$v['id']))}">
+                                    分配权限
+                                </a>
+                                |
+                                <a href="{:U('Admin/Rule/check_user',array('group_id'=>$v['id']))}">
+                                    添加成员
+                                </a>
+                            </td>
+                        </tr>
+                    </foreach>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="bjy-add" role="dialog" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button aria-hidden="true" class="close" data-dismiss="modal" type="button">
+                        ×
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        添加用户组
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <form action="{:U('Admin/Rule/add_group')}" class="form-inline" id="bjy-form" method="post">
+                        <table class="table table-striped table-bordered table-hover table-condensed">
+                            <tr>
+                                <th width="15%">
+                                    用户组名：
+                                </th>
+                                <td>
+                                    <input class="input-medium" name="title" type="text"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                </th>
+                                <td>
+                                    <input class="btn btn-success" type="submit" value="添加"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="bjy-edit" role="dialog" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button aria-hidden="true" class="close" data-dismiss="modal" type="button">
+                        ×
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        修改规则
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <form action="{:U('Admin/Rule/edit_group')}" class="form-inline" id="bjy-form" method="post">
+                        <input name="id" type="hidden">
+                            <table class="table table-striped table-bordered table-hover table-condensed">
+                                <tr>
+                                    <th width="12%">
+                                        规则名：
+                                    </th>
+                                    <td>
+                                        <input class="input-medium" name="title" type="text"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                    </th>
+                                    <td>
+                                        <input class="btn btn-success" type="submit" value="修改"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </input>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="js">
+    <script>
+        // 添加菜单
+	function add(){
+		$("input[name='title']").val('');
+		$('#bjy-add').modal('show');
+	}
+
+	// 修改菜单
+	function edit(obj){
+		var ruleId=$(obj).attr('ruleId');
+		var ruletitle=$(obj).attr('ruletitle');
+		$("input[name='id']").val(ruleId);
+		$("input[name='title']").val(ruletitle);
+		$('#bjy-edit').modal('show');
+	}
+    </script>
+</block>
